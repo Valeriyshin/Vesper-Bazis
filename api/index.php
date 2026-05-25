@@ -32,13 +32,9 @@ if (!file_exists($dbPath) || filesize($dbPath) < 1000) {
     $migrateOut = shell_exec("'$php' '$artisan' migrate --force 2>&1");
     $seedOut    = shell_exec("'$php' '$artisan' db:seed --force 2>&1");
 
-    // If shell_exec is disabled or failed — show why
-    if ($migrateOut === null) {
-        die('shell_exec is disabled or PHP_BINARY is wrong. PHP_BINARY=' . PHP_BINARY);
-    }
-    if (str_contains((string)$migrateOut, 'Error') || str_contains((string)$seedOut, 'Error')) {
-        die("<pre>MIGRATE:\n$migrateOut\n\nSEED:\n$seedOut</pre>");
-    }
+    // Show full artisan output so we can diagnose
+    header('Content-Type: text/plain');
+    die("PHP: $php\nDB: $dbPath (" . filesize($dbPath) . " bytes)\n\n=== MIGRATE ===\n$migrateOut\n=== SEED ===\n$seedOut");
 }
 
 $_SERVER['DOCUMENT_ROOT'] = __DIR__ . '/../public';
