@@ -1,0 +1,19 @@
+{
+  "framework": null,
+  "buildCommand": "touch database/database.sqlite && php artisan migrate --force && php artisan db:seed --class=RuLangSeeder --force && php artisan db:seed --class=KkLangSeeder --force && php artisan db:seed --class=FamilyClubSeeder --force && php artisan db:seed --class=ProgressStageSeeder --force && php artisan view:cache",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.2"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*\\.(jpg|jpeg|png|gif|ico|svg|css|js|ttf|woff|woff2|pdf|mp4|webmanifest|txt))",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}
