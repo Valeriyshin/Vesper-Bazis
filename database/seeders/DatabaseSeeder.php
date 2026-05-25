@@ -14,14 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-//            RuLangSeeder::class,
-//            FamilyClubSeeder::class,
-//            ProgressStageSeeder::class,
-//            ProgressStageSeeder2::class,
-            KkFcSeeder::class,
+            RuLangSeeder::class,
             KkLangSeeder::class,
-            KkLangSeeder2::class,
-            KkPsSeeder::class
+            FamilyClubSeeder::class,
+            ProgressStageSeeder::class,
         ]);
     }
 }

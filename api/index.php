@@ -1,32 +1,37 @@
 <?php
-// Temporary: show errors to debug 500
-putenv('APP_DEBUG=true');
-$_ENV['APP_DEBUG'] = 'true';
-$_SERVER['APP_DEBUG'] = 'true';
-
 // Vercel: /tmp is the only writable directory
-$dbPath = '/tmp/database.sqlite';
+$tmpDir  = '/tmp/laravel';
+$cacheDir = "$tmpDir/bootstrap-cache";
+$viewDir  = "$tmpDir/views";
+$dbPath   = "$tmpDir/database.sqlite";
 
-// Override DB path before Laravel boots
-putenv("DB_DATABASE=$dbPath");
-$_ENV['DB_DATABASE'] = $dbPath;
-$_SERVER['DB_DATABASE'] = $dbPath;
-
-// Blade compiled views must also go to /tmp
-if (!is_dir('/tmp/views')) {
-    mkdir('/tmp/views', 0755, true);
+foreach ([$cacheDir, $viewDir] as $dir) {
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+    }
 }
 
-// On cold start the /tmp is empty — migrate and seed
+// Redirect all Laravel writable paths to /tmp before the app boots
+$overrides = [
+    'APP_PACKAGES_CACHE' => "$cacheDir/packages.php",
+    'APP_SERVICES_CACHE' => "$cacheDir/services.php",
+    'APP_EVENTS_CACHE'   => "$cacheDir/events.php",
+    'VIEW_COMPILED_PATH' => $viewDir,
+    'DB_DATABASE'        => $dbPath,
+];
+foreach ($overrides as $key => $val) {
+    putenv("$key=$val");
+    $_ENV[$key]    = $val;
+    $_SERVER[$key] = $val;
+}
+
+// On cold start /tmp is empty — migrate + seed (single artisan call each)
 if (!file_exists($dbPath) || filesize($dbPath) < 1000) {
     touch($dbPath);
-    $php = PHP_BINARY;
-    $root = dirname(__DIR__);
-    shell_exec("'$php' '$root/artisan' migrate --force 2>&1");
-    shell_exec("'$php' '$root/artisan' db:seed --class=RuLangSeeder --force 2>&1");
-    shell_exec("'$php' '$root/artisan' db:seed --class=KkLangSeeder --force 2>&1");
-    shell_exec("'$php' '$root/artisan' db:seed --class=FamilyClubSeeder --force 2>&1");
-    shell_exec("'$php' '$root/artisan' db:seed --class=ProgressStageSeeder --force 2>&1");
+    $php    = PHP_BINARY;
+    $artisan = dirname(__DIR__) . '/artisan';
+    shell_exec("'$php' '$artisan' migrate --force 2>&1");
+    shell_exec("'$php' '$artisan' db:seed --force 2>&1");
 }
 
 $_SERVER['DOCUMENT_ROOT'] = __DIR__ . '/../public';
