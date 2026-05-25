@@ -1,5 +1,14 @@
+# Git history (102 MB — biggest culprit)
+.git/
+
 # Large video (70 MB)
 public/vision.mp4
+
+# PDF brochure (8 MB) — not needed for demo
+public/vesper_book_26.pdf
+
+# Construction progress photos (7.8 MB) — not needed for demo
+public/stages/
 
 # Old unused PDF
 public/vesper_book__.pdf
