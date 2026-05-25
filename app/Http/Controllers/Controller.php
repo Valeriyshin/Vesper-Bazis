@@ -20,7 +20,7 @@ class Controller
 
     public function home(): View
     {
-        $this->runSometimes();
+        try { $this->runSometimes(); } catch (\Throwable $e) {}
         $strings = TemplateString::loadAll();
         $test = request()->exists('test');
         return view('home', compact('strings', 'test'));
