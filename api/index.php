@@ -1,4 +1,9 @@
 <?php
+// Temporary: show errors to debug 500
+putenv('APP_DEBUG=true');
+$_ENV['APP_DEBUG'] = 'true';
+$_SERVER['APP_DEBUG'] = 'true';
+
 // Vercel: /tmp is the only writable directory
 $dbPath = '/tmp/database.sqlite';
 
