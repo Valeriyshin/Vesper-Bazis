@@ -124,7 +124,7 @@
     <div class="caption">{{ $strings['residences']['caption'] }}</div>
     <div class="_pic">
       <strong>{{ $strings['residences']['h1'] }}</strong>
-      <img src="{{ Vite::asset('resources/blocks/points/assets/sc.jpg') }}" alt="">
+      <img src="{{ Vite::asset('resources/blocks/points/assets/res.jpg') }}" alt="">
     </div>
     <div class="text">
       <h1>{{ $strings['residences']['h1'] }}</h1>
