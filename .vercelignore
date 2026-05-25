@@ -1,0 +1,25 @@
+# Large video (70 MB) — not needed for demo
+public/vision.mp4
+
+# Source assets already compiled to public/build_b/
+resources/blocks/
+resources/enter/
+
+# Duplicate root-level fonts
+font/
+
+# Old unused PDF
+public/vesper_book__.pdf
+
+# Build script not needed at runtime
+build.sh
+
+# Vendor test suites and docs
+vendor/*/*/tests
+vendor/*/*/Tests
+vendor/*/*/test
+vendor/*/*/Test
+vendor/*/*/docs
+vendor/*/*/doc
+vendor/*/*/examples
+vendor/*/*/.github
