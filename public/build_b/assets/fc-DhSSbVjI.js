@@ -1,0 +1,1 @@
+/* empty css                   */import{S as n,N as o}from"./navigation-CeqZ2Gvp.js";const i=document.querySelector("#fc"),r=i.querySelector(".line");new n("#fc .swiper",{modules:[o],navigation:{nextEl:"#fc .swiper-button-next",prevEl:"#fc .swiper-button-prev"},on:{activeIndexChange:function(e){let t=e.activeIndex*-282;r.style.top=t+"px"}}});

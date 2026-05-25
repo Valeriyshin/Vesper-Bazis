@@ -1,0 +1,1 @@
+/* empty css                   */import{S as o,N as e}from"./navigation-CeqZ2Gvp.js";new o("#lobby .swiper",{modules:[e],navigation:{nextEl:"#lobby .swiper-button-next",prevEl:"#lobby .swiper-button-prev"}});

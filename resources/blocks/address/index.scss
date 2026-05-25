@@ -1,0 +1,79 @@
+@use "../common";
+
+#address {
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  //align-items: flex-start;
+  position: relative;
+  padding: 80px 0;
+
+  .caption {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  ._inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    //border: 1px solid #5F738B;
+    background: #000 url("/resources/blocks/address/texture.jpg") center / cover no-repeat;
+    //box-shadow: 0 0 30px 0 rgba(153, 192, 229, 0.30);
+    gap: 35px;
+
+    color: #FFF;
+    text-align: center;
+    //font-family: Manrope, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 36px; /* 150% */
+    max-width: 1476px;
+    margin: 0 auto;
+
+    &.-mob {
+      display: none;
+    }
+
+    @include common.tab {
+      display: none;
+      font-size: 14px;
+      line-height: 26px; /* 185.714% */
+      padding: 20px;
+      gap: 10px;
+      &.-mob {
+        display: block;
+      }
+    }
+
+    br {
+      &.b {
+        display: none;
+      }
+
+      @include common.tab {
+        &.b {
+          display: block;
+        }
+        &.a {
+          display: none;
+        }
+      }
+    }
+
+    hr {
+      border: none;
+      display: block;
+      background-image: url("data:image/svg+xml,%3Csvg width='43' height='4' viewBox='0 0 43 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='27' y1='1.75' x2='43' y2='1.75' stroke='white' stroke-width='0.5'/%3E%3Cline x1='-2.18557e-08' y1='1.75' x2='16' y2='1.75' stroke='white' stroke-width='0.5'/%3E%3Crect x='22' width='2.37852' height='2.37852' transform='rotate(45 22 0)' fill='%23D9D9D9'/%3E%3C/svg%3E%0A");
+      background-repeat: no-repeat no-repeat;
+      background-position: center center;
+      background-size: contain;
+      width: 43px;
+      height: 5px;
+      margin: 0;
+    }
+  }
+}

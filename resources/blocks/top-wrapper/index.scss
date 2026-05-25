@@ -1,0 +1,14 @@
+@use "../common";
+
+@include common.tab {
+  #top-wrapper {
+    position: relative;
+    min-height: 300vh;
+    --scroll: 60px;
+
+    ._inner {
+      position: sticky;
+      top: 80px;
+    }
+  }
+}

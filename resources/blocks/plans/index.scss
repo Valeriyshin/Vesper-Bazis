@@ -1,0 +1,591 @@
+@use "../common";
+
+#plans {
+  @include common.colorSwitch;
+  position: relative;
+  margin-bottom: 160px;
+
+  @include common.nb {
+    margin-bottom: 120px;
+  }
+
+  @include common.tab {
+    margin-bottom: 60px;
+  }
+
+  .caption {
+    margin-left: 0;
+  }
+
+  h1 {
+    //font-family: Inter, sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 64px 0;
+
+    @include common.nb {
+      font-size: 48px;
+    }
+
+    @include common.tab {
+      font-size: 24px;
+      margin: 48px 0;
+    }
+  }
+
+  ._filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    ._rooms {
+      p {
+        //font-family: Roboto, sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0 0 40px;
+
+        @include common.nb {
+          font-size: 24px;
+          margin-bottom: 32px;
+        }
+
+        @include common.tab {
+          font-size: 16px;
+        }
+      }
+
+      ._list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 24px;
+
+        @include common.tab {
+          gap: 8px;
+        }
+
+        input {
+          display: none;
+
+          + span {
+            display: flex;
+            width: 55px;
+            height: 52px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #FFF;
+            box-shadow: 0 4px 6.2px 0 rgba(0, 0, 0, 0.25);
+            transition: all .2s ease-in-out;
+            //font-family: Roboto, sans-serif;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-transform: uppercase;
+            color: #8a9aad;
+            cursor: pointer;
+
+            @include common.tab {
+              font-size: 14px;
+              width: 30px;
+              height: 28px;
+            }
+          }
+
+          &:checked + span {
+            background: #99C0E5;
+            color: #FFF;
+          }
+        }
+      }
+    }
+
+    ._more {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      //font-family: Inter, sans-serif;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      cursor: pointer;
+      margin-top: 4px;
+
+      &::after {
+        display: block;
+        content: "";
+        background: url("/resources/blocks/plans/assets/v.svg") center / contain no-repeat;
+        width: 36px;
+        height: 18px;
+        margin-left: 40px;
+        margin-top: 1px;
+        transition: all .2s ease-in-out;
+        @include common.dark {
+          background-image: url("/resources/blocks/plans/assets/v-i.svg");
+        }
+      }
+
+      &.-active::after {
+        transform: rotateX(180deg);
+      }
+
+      @include common.nb {
+        font-size: 24px;
+        &::after {
+          width: 20px;
+          margin-left: 20px;
+        }
+      }
+
+      @include common.tab {
+        margin-top: 0;
+        font-size: 16px;
+        &:after {
+          width: 12px;
+          margin-left: 16px;
+          height: 10px;
+        }
+      }
+    }
+
+    @include common.media-max(390px) {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  ._results {
+    --cols: 2;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    column-gap: 40px;
+    row-gap: 80px;
+    margin: 80px 0 0;
+    padding: 0;
+    min-height: 728px;
+
+    @include common.media-min(960px){
+      --cols: 3;
+    }
+
+    @include common.media-min(1260px){
+      --cols: 4;
+    }
+    @include common.media-min(1636px) {
+      --cols: 3;
+    }
+
+    @include common.nb {
+      column-gap: 20px;
+      row-gap: 40px;
+    }
+
+    @include common.tab {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 650px;
+    }
+
+    @include common.media-max(515px) {
+      min-height: 755px;
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      background: #ffffff;
+      width: 100%;
+      height: calc(100vw - 20px);
+
+      @include common.media-min(400px) {
+        height: calc(100vw - 40px);
+      }
+
+      @include common.tab-min {
+        height: calc((100vw - 80px) / var(--cols) / 0.8);
+      }
+
+      @include common.media-min(1636px) {
+        height: 505px;
+    }
+
+      &:hover {
+        box-shadow: 0 0 30px 0 rgba(153, 192, 229, 0.6);
+      }
+
+      ._plan {
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 28px;
+        overflow: hidden;
+        flex-shrink: 1;
+        flex-grow: 1;
+        border-bottom: 1px solid #5F738B;
+
+        @include common.media-min(370px) {
+          padding: 40px;
+        }
+
+        //@include common.tab-min{
+        //  padding: 80px;
+        //}
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+
+      ._info {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        grid-auto-flow: column;
+        color: #000000;
+        text-align: center;
+
+        strong {
+          font-size: 10px;
+          text-transform: uppercase;
+          padding: 5px;
+        }
+
+        div {
+          font-size: 16px;
+          padding: 5px;
+        }
+
+        @include common.tab-min {
+          strong {
+            font-size: 14px;
+            padding: 5px 5px 8px;
+          }
+          div {
+            font-size: 22px;
+            padding: 8px 5px 5px;
+          }
+        }
+
+        @include common.tab-min {
+          strong {
+            font-size: 16px;
+            padding: 5px 5px 8px;
+          }
+          div {
+            font-size: 28px;
+            padding: 8px 5px 5px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  ._filters-plus {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 300px;
+    padding: 80px 0;
+    background: rgba(#fff, .9);
+    @include common.dark {
+      background: rgba(#000, .9);
+    }
+
+    @include common.tab {
+      top: 240px;
+    }
+    @include common.media-max(390px) {
+      top: 300px;
+    }
+
+    strong {
+      //font-family: Roboto, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      @include common.tab {
+        font-size: 16px;
+      }
+    }
+
+    .apply {
+      height: 92px;
+      min-width: 308px;
+      margin: 0 0 64px;
+      padding: 0;
+      border: 2px solid #fff;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: #ffffff;
+      outline: none;
+      background: #000000;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        color: #000000;
+        background: #ffffff;
+      }
+
+      @include common.tab {
+        font-size: 16px;
+        height: 48px;
+        min-width: 287px;
+      }
+
+      @include common.media-max(330px) {
+        min-width: 0;
+        width: 100%;
+      }
+    }
+
+    ._field {
+      margin: 12px 0 64px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 24px;
+      @include common.tab {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      span {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 24px;
+        @include common.tab {
+          flex-grow: 1;
+          gap: 12px;
+        }
+      }
+
+      label {
+        //font-family: Roboto, sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        font-variant: small-caps;
+        opacity: .6;
+        @include common.tab {
+          font-size: 14px;
+          flex-shrink: 0;
+        }
+      }
+
+      ._spinner {
+        width: 263px;
+        height: 92px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid #fff;
+        color: #ffffff;
+        @include common.dark {
+          border-color: #fff;
+        }
+        @include common.tab {
+          height: 48px;
+          width: auto;
+          max-width: 260px;
+          flex-grow: 1;
+        }
+
+        button {
+          width: 70px;
+          height: 70px;
+          background: transparent;
+          text-align: center;
+          //font-family: Roboto, sans-serif;
+          font-size: 60px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          font-variant: small-caps;
+          border: none;
+          cursor: pointer;
+          color: #ffffff;
+
+          @include common.tab {
+            height: 45px;
+            width: 45px;
+            font-size: 32px;
+            padding: 0;
+            flex-shrink: 1;
+          }
+        }
+
+        input {
+          //font-family: Roboto, sans-serif;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          font-variant: small-caps;
+          opacity: .6;
+          text-align: center;
+          flex-grow: 1;
+          flex-shrink: 1;
+          border: none;
+          background: none;
+          padding: 0;
+          color: #ffffff;
+          width: 100px;
+
+          @include common.tab {
+            font-size: 14px;
+          }
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          &[type=number] {
+            -moz-appearance: textfield;
+          }
+        }
+      }
+    }
+
+    .dropdown {
+      max-width: 644px;
+      border: 2px solid #fff;
+      height: 80px;
+      font-size: 24px;
+      padding: 0 24px;
+      z-index: 3;
+
+      &::before {
+        display: none;
+      }
+
+      ul {
+        z-index: 1;
+        border: 2px solid #fff;
+        margin-left: -1px;
+        margin-right: -1px;
+      }
+
+
+      &.-open, &.-opened {
+        ul {
+          top: 77px;
+        }
+      }
+    }
+  }
+
+
+  ._moreP {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    color: #99C0E5;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 60px auto 0;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &::after {
+      display: block;
+      content: "";
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='15' viewBox='0 0 27 15' fill='none'%3E%3Cpath d='M1 1L13.5 13L26 1' stroke='%2399C0E5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat no-repeat;
+      background-position: center center;
+      background-size: cover;
+      width: 30px;
+      height: 20px;
+      margin-top: 20px;
+    }
+
+    @include common.tab {
+      font-size: 16px;
+      margin-top: 30px;
+
+      &::after {
+        width: 25px;
+        height: 12px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th, td {
+      border-bottom: 1px solid #B3B2B2;
+      //font-family: Roboto, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      font-variant: small-caps;
+      padding: 8px;
+
+      @include common.tab {
+        font-size: 14px;
+        padding: 4px;
+      }
+    }
+
+    tr:last-child {
+      th, td {
+        border-bottom: none;
+      }
+    }
+
+    th {
+      color: #99c0e5;
+    }
+
+    td {
+      text-align: right;
+    }
+  }
+}

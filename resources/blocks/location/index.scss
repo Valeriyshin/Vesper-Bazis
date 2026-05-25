@@ -1,0 +1,543 @@
+@use "../common";
+
+#location {
+  position: relative;
+  margin-top: 40px;
+  height: 250vh;
+  margin-bottom: 200px;
+
+  @include common.media-max(1050px) {
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 158px;
+      height: 1px;
+      background: #5F738B;
+    }
+  }
+
+  @include common.tab {
+    height: 200vh;
+    margin-bottom: 100px;
+  }
+
+  ._sticky {
+    position: sticky;
+    top: -60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 110px;
+
+    @include common.media-max(1050px) {
+      flex-direction: column;
+      gap: 0;
+      top: 10px;
+      //align-items: stretch;
+    }
+    @include common.tab {
+      top: 10px;
+    }
+  }
+
+  .num-block {
+    position: absolute;
+    top: 130px;
+    left: 480px;
+    width: 650px;
+    height: 167px;
+
+    &::after {
+      width: 167px;
+      height: 167px;
+      content: "2";
+    }
+
+    @include common.media-max(1180px) {
+      left: 491px;
+      top: 96px;
+    }
+
+    @include common.media-max(1050px) {
+      left: 20px;
+      width: 152px;
+      height: 800px;
+      top: 378px;
+      z-index: 2;
+      &::after {
+        width: 152px;
+        height: 152px;
+      }
+    }
+
+    @include common.tab {
+      width: 76px;
+      top: 175px;
+      left: 10px;
+      height: 400px;
+      &::after {
+        width: 76px;
+        height: 76px;
+      }
+    }
+  }
+
+  .caption {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 0;
+    @include common.media-max(1050px) {
+      display: none;
+    }
+    //
+    //@include common.tab {
+    //  margin-top: 26px;
+    //}
+  }
+
+  ._text {
+    margin-top: 235px;
+    width: 35%;
+    flex: 35% 0 0;
+
+    @include common.media-max(1050px) {
+      width: 100%;
+      padding-left: 100px;
+      margin-top: 100px;
+      max-width: 820px;
+      align-self: flex-end;
+      position: relative;
+      z-index: 3;
+    }
+    @include common.tab {
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: #FFF;
+      font-size: 84px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 107.143%;
+      text-transform: uppercase;
+      margin: 0;
+      padding-left: 61px;
+      @include common.media-max(1050px) {
+        padding-left: 0;
+      }
+      @include common.tab {
+        font-size: 32px;
+        line-height: 118.75%;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+      margin: 40px 0 72px;
+      padding-left: 61px;
+      @include common.media-max(1050px) {
+        padding-left: 0;
+        margin: 16px 0 40px;
+      }
+      @include common.tab {
+        margin: 8px 0 20px;
+        font-size: 12px;
+      }
+    }
+
+    ._cut {
+      border-left: 1px solid #5F738B;
+      padding-left: 60px;
+      cursor: pointer;
+      position: relative;
+      margin-right: -80px;
+
+      @include common.media-max(1050px) {
+        padding-left: 0;
+        border-left: none;
+        margin-right: 0;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 8px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='21' viewBox='0 0 38 21' fill='none'%3E%3Cpath d='M1 1L19 19L37 1' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 36px;
+        height: 18px;
+        transition: all .2s ease-in-out;
+
+        @include common.tab {
+          width: 25px;
+          height: 12px;
+        }
+      }
+
+      p {
+        margin: 0;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 150%;
+        padding-right: 60px;
+        @include common.tab {
+          padding-right: 30px;
+          font-size: 16px;
+          line-height: 122.5%;
+        }
+      }
+
+      ._hidden {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.2s ease-in-out;
+      }
+
+      &.-open {
+        &::after {
+          transform: rotateX(-180deg);
+        }
+
+        ._hidden {
+          max-height: 550px;
+        }
+      }
+
+      &.-disabled {
+        cursor: auto;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .ul {
+    display: none;
+    @include common.media-max(1050px) {
+      margin-top: 60px;
+      padding-left: 120px;
+      margin-right: 20px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 100px;
+      align-self: flex-end;
+
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+
+      overflow: hidden;
+      z-index: 3;
+      position: relative;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        position: relative;
+
+        &::before {
+          display: block;
+          content: "";
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='14' viewBox='0 0 9 14' fill='none'%3E%3Cpath d='M1 13.1069L7.2369 7.05347L0.999999 1.00002' stroke='%2399C0E5' stroke-width='1.10063' stroke-linecap='round'/%3E%3C/svg%3E");
+          background-repeat: no-repeat no-repeat;
+          background-position: center center;
+          background-size: contain;
+          width: 12px;
+          height: 28px;
+          position: absolute;
+          left: -30px;
+          transition: all .2s ease-in-out;
+        }
+      }
+
+      &::before {
+        left: 20px;
+      }
+    }
+
+    @include common.tab {
+      margin-top: 30px;
+      gap: 25px;
+      padding-left: 100px;
+      margin-right: 0;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      align-self: stretch;
+
+      > div {
+        gap: 10px;
+
+        &::before {
+          width: 6px;
+          height: 12px;
+          left: -10px;
+        }
+
+        &:nth-child(2) {
+          div {
+            width: min-content;
+          }
+        }
+      }
+    }
+  }
+
+  ._map {
+    flex-grow: 1;
+    height: 725px;
+    margin-top: 240px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin-right: -40px;
+
+    @include common.media-max(1340px) {
+      margin-right: -20px;
+    }
+
+    @include common.media-max(1050px) {
+      width: calc(100% - 80px);
+      aspect-ratio: 954/725;
+      margin-top: 80px;
+      height: auto;
+      align-self: flex-end;
+      z-index: 3;
+    }
+
+    @include common.tab {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    @include common.micro {
+      margin-right: -10px;
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(138deg, #000 -8.73%, rgba(0, 0, 0, 0.00) 51.11%);
+      z-index: 1;
+      @include common.media-max(1050px) {
+        display: none;
+      }
+    }
+
+    img {
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    ul {
+      position: absolute;
+      z-index: 2;
+      left: 60px;
+      top: 40px;
+      padding: 0;
+      list-style: none;
+      color: #FFF;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      @include common.media-max(1050px) {
+        display: none;
+      }
+
+      &::before {
+        display: block;
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='23' viewBox='0 0 14 23' fill='none'%3E%3Cpath d='M1 22L12 11.5L0.999999 1' stroke='%2399C0E5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 11px;
+        height: 21px;
+        position: absolute;
+        left: -30px;
+        top: -30px;
+        transition: all .2s ease-in-out;
+      }
+
+      &.-fp::before {
+        top: 30px;
+      }
+    }
+
+    ._pin {
+      display: block;
+      position: absolute;
+      z-index: 3;
+      width: 55px;
+      height: 76px;
+      background: url(/resources/blocks/location/assets/pin.svg) bottom center / contain no-repeat;
+      opacity: 0;
+      transform: translate(-50%, -100%);
+      transition: all .2s ease-in-out;
+
+      @include common.tab {
+        width: 20px;
+        height: 27px;
+      }
+
+      &.-fp {
+        left: 63%;
+        top: 13%;
+      }
+
+      &.-at {
+        left: 70%;
+        top: 58%;
+      }
+
+      &.-mu {
+        left: 81%;
+        top: 57%;
+      }
+
+      &.-fc {
+        left: 60%;
+        top: 60%;
+      }
+
+      &.-gc {
+        left: 55.7%;
+        top: 72.5%;
+      }
+
+      &.-cc {
+        left: 64.4%;
+        top: 84.5%;
+      }
+
+      &.-em {
+        left: 23%;
+        top: 93%;
+      }
+    }
+  }
+
+  $items: (
+    at: (0, -2, -50, 0, -50),
+    mu: (38, 58, -50, 25, -50),
+    fc: (133, 170, -2, 108, 8),
+    gc: (85, 107, -50, 57, -50),
+    cc: (205, 194, 46, 194, 46),
+    em: (170, 194, 46, 194, 46),
+  );
+
+  @each $item, $top in $items {
+
+    &.-#{$item} {
+      ul::before {
+        top: nth($top, 1) +px;
+      }
+
+      .ul {
+        > div {
+          &:nth-child(1)::before {
+            top: nth($top, 2) + px;
+            @include common.tab {
+              top: nth($top, 4) + px;
+            }
+          }
+
+          &:nth-child(2)::before {
+            top: nth($top, 3) + px;
+            @include common.tab {
+              top: nth($top, 5) + px;
+            }
+          }
+
+          > div {
+            &.-#{$item} {
+              color: #99c0e5;
+            }
+          }
+        }
+
+      }
+
+      li.-#{$item} {
+        color: #99c0e5;
+      }
+
+      ._pin.-#{$item} {
+        opacity: 1;
+      }
+    }
+  }
+
+  ._texture {
+    position: absolute;
+    background: url("/resources/blocks/location/assets/texture.jpg") center / cover no-repeat;
+    opacity: .4;
+    height: 600px;
+    left: 600px;
+    top: 470px;
+    right: 0;
+
+    @include common.media-max(1050px) {
+      opacity: .8;
+      right: -20px;
+      left: 160px;
+      z-index: 1;
+    }
+
+    @include common.tab {
+      left: 30px;
+      //height: auto;
+      top: auto;
+      height: 450px;
+      bottom: -40px;
+    }
+
+    @include common.micro {
+      right: -10px;
+    }
+  }
+
+}

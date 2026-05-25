@@ -1,0 +1,2002 @@
+@use "../common";
+
+.points {
+  padding: 0;
+  margin: 90px 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 90px;
+
+  @include common.min1051 {
+    gap: 125px;
+  }
+
+  @include common.nb-min {
+    gap: 160px;
+  }
+
+  > li {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    ._pic {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+
+      @include common.micro {
+        overflow-wrap: break-word;
+        hyphens: auto;
+      }
+
+      img {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      &::before {
+        display: block;
+        content: "";
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 50.78%, rgba(0, 0, 0, 0.70) 99.88%);
+      }
+
+      strong {
+        --padding: 20px;
+        position: absolute;
+        bottom: var(--padding);
+        left: var(--padding);
+        z-index: 2;
+        color: #FFF;
+        //font-family: Roboto, sans-serif;
+        //font-size: 84px;
+        //font-style: normal;
+        //font-weight: 900;
+        //line-height: normal;
+        //text-transform: uppercase;
+
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 118.75%;
+        text-transform: uppercase;
+
+        @include common.media-min(768px) {
+          font-size: 58px;
+        }
+
+        @include common.min1051 {
+          --padding: 40px;
+        }
+
+        @include common.nb-min {
+          --padding: 60px;
+          font-size: 84px;
+          line-height: 90px;
+        }
+
+        sub {
+          display: block;
+          //font-size: 28px;
+          //font-style: normal;
+          //font-weight: 400;
+          //line-height: normal;
+          //margin-bottom: -18px;
+          //margin-top: 40px;
+
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          text-transform: uppercase;
+          margin-top: 8px;
+
+          @include common.media-min(768px) {
+            font-size: 17px;
+          }
+
+          @include common.nb-min {
+            font-size: 24px;
+          }
+        }
+      }
+
+    }
+
+    ._text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+    }
+  }
+
+
+  ._cut {
+    position: relative;
+    cursor: pointer;
+
+    button {
+      background: transparent url("data:image/svg+xml,%3Csvg width='38' height='21' viewBox='0 0 38 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L19 19L37 1' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A") no-repeat no-repeat center center;
+      background-size: contain;
+      width: 36px;
+      height: 18px;
+      border: none;
+      padding: 0;
+      margin: 0;
+      transition: all .2s ease;
+      position: absolute;
+      right: 0;
+      //top: 120px;
+      bottom: 0;
+    }
+
+    p {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 162.5%;
+      margin: 0 40px 0 0;
+
+      @include common.media-min(768px) {
+        font-size: 20px;
+      }
+
+      @include common.min1051 {
+        margin-right: 60px;
+      }
+
+      @include common.nb-min {
+        font-size: 24px;
+        line-height: 150%;
+      }
+    }
+
+    ._hidden {
+      overflow: hidden;
+      max-height: 0;
+      transition: all .2s ease;
+
+      p {
+        transition: all .2s ease;
+        transform: translateY(calc(-100% - 24px));
+      }
+    }
+
+    &.-open {
+      button {
+        transform: rotateX(180deg);
+      }
+
+      ._hidden {
+        p {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+#architecture {
+  padding-bottom: 50px;
+  //margin-top: -30px;
+
+  @include common.media-min(1051px) {
+    margin-top: 280px;
+    flex-direction: row;
+  }
+
+  ._cut.-open {
+    ._hidden {
+      max-height: 200px;
+    }
+  }
+
+  @include common.min1051 {
+    ._cut,
+    ._cut.-open {
+      ._hidden {
+        max-height: none;
+      }
+
+      button {
+        bottom: auto;
+        top: 70px;
+      }
+    }
+  }
+
+  @include common.nb-min {
+    padding-bottom: 0;
+    margin-bottom: 240px;
+  }
+
+  .caption {
+    margin-left: 0;
+    margin-right: auto;
+    margin-top: 20px;
+
+    @include common.min1051 {
+      position: absolute;
+      top: -100px;
+      right: 0;
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  ._pic {
+    max-width: 80%;
+
+    img{
+      height: 100%;
+      object-fit: cover;
+    }
+    @include common.media-min(768px) {
+      max-width: calc((85vw - 40px) / 0.8);
+    }
+    @include common.min1051 {
+      max-width: 65vw;
+      flex: 65vw 0 0;
+    }
+
+    @include common.nb-min {
+      width: 948px;
+      max-width: 948px;
+      flex: 948px 0 0;
+    }
+  }
+
+  .texture {
+    position: absolute;
+    top: -170px;
+    left: 180px;
+    //bottom: 360px;
+    height: 89vw;
+    right: -20px;
+    background: url("/resources/blocks/points/assets/t1.jpg") center / cover no-repeat;
+    @include common.micro {
+      right: -10px;
+    }
+    @include common.media-min(768px) {
+      left: 60vw;
+      height: 110vw;
+    }
+
+    @include common.min1051 {
+      left: 30vw;
+      top: -100px;
+      right: 50vw;
+      height: auto;
+      bottom: -5vw;
+    }
+
+    @include common.nb-min {
+      left: 473px;
+      top: -77px;
+      right: 532px;
+      bottom: -116px;
+    }
+  }
+
+  ._text {
+    margin-left: 20px;
+    @include common.min1051 {
+      //position: relative;
+      //z-index: 1;
+      //justify-content: flex-start;
+      margin-left: 80px;
+    }
+
+    @include common.nb-min {
+      margin-left: 176px;
+      margin-top: 300px;
+    }
+  }
+
+  h2 {
+    margin: 40px 0 20px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 133.333%;
+    text-transform: uppercase;
+
+    @include common.media-min(768px) {
+      font-size: 36px;
+    }
+
+    @include common.nb-min {
+      font-size: 48px;
+      line-height: normal;
+    }
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    height: 1px;
+    width: 100%;
+    max-width: 150px;
+    background: #5F738B;
+    @include common.min1051 {
+      display: none;
+    }
+  }
+
+  .num-block {
+    --size: 76px;
+    position: absolute;
+    width: var(--size);
+    height: 50vw;
+    right: 30px;
+    top: 42vw;
+
+    &::after {
+      width: var(--size);
+      height: var(--size);
+      position: absolute;
+      bottom: 0;
+      content: "3";
+    }
+
+    @include common.media-min(768px) {
+      right: 10vw;
+      --size: 124px;
+      top: 64vw;
+    }
+
+    @include common.min1051 {
+      right: 0;
+      top: 50px;
+      width: 80vw;
+      height: var(--size);
+      &::after {
+        right: 0;
+      }
+    }
+
+    @include common.nb-min {
+      --size: 167px;
+      top: 62px;
+      left: 600px;
+      right: 60px;
+      width: auto;
+    }
+  }
+}
+
+#safety {
+  z-index: 1;
+
+  @include common.min1051 {
+    margin-top: 150px;
+  }
+
+  @include common.nb-min {
+    margin-top: 0;
+  }
+
+  ._pic {
+    max-width: calc(100% - 20px);
+    align-self: flex-end;
+    width: 100%;
+
+    strong {
+      left: 80px;
+
+      @include common.tab-min {
+        left: 120px;
+      }
+
+      @include common.min1051 {
+        left: var(--padding);
+      }
+    }
+
+    @include common.tab-min {
+      max-width: calc(100% - 40px);
+    }
+
+    @include common.min1051 {
+      max-width: calc(80vw);
+    }
+
+    @include common.nbzm {
+      max-width: 1050px;
+    }
+
+    @include common.nb-min {
+      width: 1064px;
+    }
+  }
+
+  ._text {
+    padding-left: 100px;
+
+    @include common.tab-min {
+      padding-left: 160px;
+    }
+
+    @include common.min1051 {
+      padding-left: 160px;
+    }
+
+    @include common.min1051 {
+      width: 80vw;
+      align-self: flex-end;
+      padding-left: 0;
+    }
+
+
+    @include common.nbzm {
+      width: 1052px;
+    }
+
+    @include common.nb-min {
+      width: 1064px;
+    }
+
+    p {
+      margin: 30px 0 0;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 162.5%;
+
+      @include common.tab-min {
+        font-size: 20px;
+      }
+
+      @include common.min1051 {
+        margin-top: 40px;
+        padding-left: 40px;
+        border-left: 1px solid #5F738B;
+        margin-right: 40vw;
+      }
+
+      @include common.nb-min {
+        font-size: 24px;
+        padding-left: 60px;
+        margin-top: 60px;
+        line-height: 150%;
+        margin-right: 472px;
+      }
+    }
+  }
+
+  .num-block {
+    position: absolute;
+    width: var(--size);
+    //height: 50vw;
+    left: 0;
+    z-index: 3;
+    bottom: 0;
+    top: 47vw;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: "4";
+    }
+
+    @include common.min1051 {
+      width: auto;
+      top: -80px;
+      left: 60px;
+      right: 50vw;
+      bottom: auto;
+      height: var(--size);
+    }
+
+    @include common.nb-min {
+      left: 64px;
+      right: 529px;
+    }
+  }
+}
+
+#calm {
+  margin-top: -50px;
+  margin-left: -20px;
+  margin-right: -20px;
+  background: url("/resources/blocks/points/assets/kbg.jpg") center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 0 60px;
+
+  @include common.micro {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  @include common.tab-min {
+    margin-top: 0;
+    gap: 20px;
+    padding: 80px 0;
+  }
+
+  @include common.min1051 {
+    margin-top: -105vw;
+    padding: 50px 0;
+    margin-left: 0;
+    margin-right: 30px;
+    min-height: calc(100vw + 40px);
+    gap: 24px;
+    background-image: url(/resources/blocks/points/assets/kpc.jpg);
+  }
+
+  @include common.nbzm {
+    margin-top: -1280px;
+    min-height: 1200px;
+  }
+
+  @include common.nb-min {
+    margin-top: -1300px;
+    gap: 36px;
+  }
+
+
+  h2 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 162.5%;
+    padding-left: 80px;
+    margin: 0;
+    @include common.tab-min {
+      font-size: 20px;
+      padding-left: 120px;
+    }
+
+    @include common.min1051 {
+      font-size: 24px;
+    }
+  }
+
+  ._point {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 162.5%;
+    padding-left: 80px;
+    position: relative;
+
+    @include common.tab-min {
+      font-size: 20px;
+      padding-left: 120px;
+      max-width: 80vw;
+    }
+
+    @include common.min1051 {
+      max-width: 36vw;
+      font-size: 24px;
+    }
+
+    @include common.nbzm {
+      max-width: 500px;
+    }
+
+    .num {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      color: #5F738B;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 250;
+      line-height: 108.333%;
+      @include common.tab-min {
+        left: 50px;
+        font-size: 26px;
+      }
+
+      @include common.min1051 {
+        top: 6px;
+      }
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 11px;
+      left: 54px;
+      width: 16px;
+      height: 1px;
+      background: #5F738B;
+      @include common.tab-min {
+        left: 88px;
+      }
+      @include common.min1051 {
+        top: 20px;
+      }
+    }
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    height: 1px;
+    width: 100%;
+    max-width: 150px;
+    background: #5F738B;
+
+    @include common.min1051 {
+      display: none;
+    }
+  }
+}
+
+#lobby {
+  margin-left: -20px;
+  margin-right: -20px;
+
+  @include common.micro {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  @include common.min1051 {
+    padding-bottom: 60px;
+  }
+
+  ._pic {
+    margin-bottom: 8px;
+    z-index: 2;
+
+    @include common.min1051 {
+      margin-bottom: 360px;
+    }
+
+    @include common.media-min(1200px) {
+      margin-bottom: 420px;
+    }
+  }
+
+  .swiper {
+    --swiper-navigation-color: #fff;
+  }
+
+  > .caption {
+    display: none !important;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+  }
+
+  @include common.min1051 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+
+    > strong {
+      display: none !important;
+    }
+
+    ._pic {
+      flex: 947px 1 1;
+    }
+    ._text {
+      flex: 527px 1 1;
+      overflow: hidden;
+    }
+  }
+
+  strong {
+    display: block;
+    color: #FFF;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 118.75%;
+    text-transform: uppercase;
+    padding: 0 20px;
+    margin-bottom: 24px;
+
+    @include common.micro {
+      padding: 0 10px;
+    }
+
+    @include common.tab-min {
+      font-size: 58px;
+    }
+
+    @include common.min1051 {
+      margin-bottom: 40px;
+    }
+
+    @include common.nb-min {
+      font-size: 84px;
+    }
+
+    sub {
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+      vertical-align: baseline;
+      display: block;
+      margin-top: 12px;
+
+      @include common.tab-min {
+        font-size: 17px;
+      }
+
+      @include common.nb-min {
+        font-size: 24px;
+      }
+    }
+  }
+
+  ._text {
+
+    strong {
+      display: none;
+
+      @include common.min1051 {
+        display: block;
+      }
+    }
+
+    .caption {
+      @include common.min1051 {
+        display: none;
+      }
+    }
+
+    ul {
+      list-style: none;
+      margin: 30px 0;
+      padding: 20px 10px;
+      background: url("/resources/blocks/points/assets/lbb.jpg") center / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 16px;
+      counter-reset: lobby;
+      @include common.tab-min {
+        gap: 26px;
+      }
+
+      li {
+        padding-left: 40px;
+        position: relative;
+        counter-increment: lobby;
+        @include common.tab-min {
+          padding-left: 61px;
+        }
+
+        &::before {
+          display: inline-block;
+          content: "0" counter(lobby) " —";
+          color: #5f738b;
+          position: absolute;
+          left: 0;
+
+          @include common.tab-min {
+            font-size: 26px;
+            text-align: right;
+            left: auto;
+            right: calc(100% - 52px);
+            white-space: nowrap;
+            font-weight: 250;
+          }
+          @include common.nb-min {
+            font-size: 33px;
+          }
+        }
+
+        &:last-child {
+          margin-top: 40px;
+
+          &::after {
+            display: block;
+            content: "";
+            //width: 100%;
+            height: 1px;
+            background: #5F738B;
+            position: absolute;
+            left: 0;
+            top: -25px;
+            right: 0;
+          }
+
+          @include common.nb-min {
+            margin-top: 60px;
+            &::after {
+              top: -40px;
+            }
+          }
+        }
+      }
+
+      @include common.media-min(400px) {
+        padding: 20px;
+      }
+
+      @include common.tab-min {
+        font-size: 20px;
+        max-width: 600px;
+        margin-left: 20px;
+      }
+
+      @include common.min1051 {
+        position: absolute;
+        left: 20px;
+        z-index: 1;
+        bottom: 0;
+        margin: 0;
+        padding: 100px 80px;
+      }
+
+      @include common.nb-min {
+        font-size: 24px;
+        line-height: 150%;
+        max-width: 600px;
+      }
+    }
+
+    i {
+      font-style: normal;
+      display: block;
+      padding: 0 10px;
+
+      @include common.media-min(400px) {
+        padding: 0 20px;
+      }
+
+      @include common.tab-min {
+        font-size: 20px;
+      }
+
+      @include common.min1051 {
+        position: absolute;
+        left: 20px;
+        z-index: 2;
+        bottom: 0;
+        margin: 0;
+      }
+
+      @include common.nb-min {
+        font-size: 24px;
+        line-height: 150%;
+      }
+    }
+  }
+
+  .caption {
+    margin-left: 0;
+    margin-bottom: 72px;
+    padding: 0 20px;
+
+    @include common.micro {
+      padding: 0 10px;
+    }
+
+    @include common.min1051 {
+      margin-bottom: 0;
+    }
+  }
+
+  ._cut {
+    padding: 0 20px;
+
+    button {
+      right: 20px;
+    }
+
+    p {
+      margin-right: 80px;
+    }
+
+    @include common.micro {
+      padding: 0 10px;
+      button {
+        right: 10px;
+      }
+
+      //p {
+      //  margin-right: 40px;
+      //}
+    }
+
+    @include common.tab-min {
+      max-width: 900px;
+    }
+
+    @include common.min1051 {
+      max-width: none;
+    }
+
+    &.-open {
+      ._hidden {
+        max-height: 200px;
+      }
+    }
+
+  }
+
+  .num-block {
+    --size: 76px;
+    position: absolute;
+    width: var(--size);
+    height: calc(var(--size) * 1.45);
+    right: 20px;
+    top: calc(72vw + 60px);
+    z-index: 3;
+
+    &::after {
+      width: var(--size);
+      height: var(--size);
+      position: absolute;
+      bottom: 0;
+      content: "5";
+    }
+
+    @include common.media-min(525px) {
+      top: calc(72vw + 60px);
+    }
+
+    @include common.tab-min {
+      --size: 124px;
+      top: calc(78vw + 60px);
+    }
+
+    @include common.min1051 {
+      //top: auto;
+      //bottom: 90px;
+      top: 38vw;
+      left: 50vw;
+      height: calc(var(--size) * 2);
+    }
+
+    @include common.nbzm {
+      top: 490px;
+    }
+
+    @include common.nb-min {
+      left: 631px;
+      --size: 167px;
+      height: 270px;
+    }
+  }
+}
+
+#tech {
+
+  @include common.min1051 {
+    flex-direction: row;
+    gap: 80px;
+  }
+
+  .caption {
+    display: none;
+
+    @include common.min1051 {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  strong {
+    display: block;
+    color: #FFF;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 118.75%;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    margin-left: 100px;
+
+    @include common.tab-min {
+      font-size: 58px;
+      margin-left: 160px;
+    }
+
+    @include common.min1051 {
+      margin-left: 0;
+      flex: 640px 1 1;
+    }
+
+    @include common.nb-min {
+      font-size: 84px;
+    }
+
+    sub {
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+      vertical-align: baseline;
+      display: block;
+      margin-top: 12px;
+      @include common.tab-min {
+        font-size: 17px;
+      }
+      @include common.nb-min {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .num-block {
+    position: absolute;
+    width: var(--size);
+    left: 0;
+    top: -18px;
+    height: calc(var(--size) * 3);
+    z-index: 1;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      content: "6";
+    }
+
+    @include common.min1051 {
+      height: var(--size);
+      width: 80vw;
+      top: auto;
+      bottom: 80px;
+    }
+
+    @include common.nb-min {
+      width: 1000px;
+      bottom: 85px;
+    }
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: tech;
+    padding: 42px 20px 90px;
+    margin: 0 -20px;
+    background: url("/resources/blocks/points/assets/tech.jpg") center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 26px;
+    position: relative;
+    z-index: 2;
+    @include common.micro {
+      padding: 42px 10px 90px;
+      margin: 0 -10px;
+    }
+
+    @include common.min1051 {
+      flex: 790px 1 1;
+      padding: 100px 80px;
+    }
+
+    li {
+      position: relative;
+      counter-increment: tech;
+      padding-left: 60px;
+
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 162.5%;
+
+      &::before {
+        display: block;
+        content: "0" counter(tech);
+        color: #5F738B;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 250;
+        line-height: 108.333%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        left: 35px;
+        top: 11px;
+        width: 16px;
+        height: 1px;
+        background: #5F738B;
+      }
+
+      @include common.tab-min {
+        font-size: 20px;
+        padding-left: 65px;
+        &::before {
+          font-size: 26px;
+        }
+        &::after {
+          left: 40px;
+          top: 14px;
+        }
+      }
+
+      @include common.nb-min {
+        font-size: 24px;
+        padding-left: 79px;
+        &::before {
+          font-size: 33px;
+          top: 3px;
+        }
+        &:after {
+          width: 20px;
+          top: 20px;
+          left: 45px;
+        }
+      }
+    }
+  }
+}
+
+#courtyard {
+  z-index: 1;
+
+  @include common.tab-min {
+    margin-top: 30px;
+    padding-top: 50px;
+  }
+
+  @include common.min1051 {
+    flex-direction: row;
+    gap: 80px;
+    padding-top: 0;
+  }
+
+  @include common.nbzm {
+    gap: 120px;
+    margin-top: 40px;
+  }
+
+  .caption {
+    margin-left: 0;
+    @include common.min1051 {
+      display: none;
+    }
+  }
+
+  ._pic {
+    margin-left: -20px;
+    max-width: calc(100% - 20px);
+    @include common.min1051 {
+      flex: 949px 1 1;
+    }
+
+    &::before{
+      display: none;
+    }
+  }
+
+  ._yard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    width: 100%;
+
+    @include common.media-min(400px){
+      grid-template-columns: 3fr 2fr;
+    }
+
+    @include common.media-min(520px){
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    div {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/2;
+      transform: translateX(0);
+      justify-self: stretch;
+      align-self: stretch;
+
+      &._cap {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    strong {
+      position: static;
+      //transform: translate(100%, 0%);
+
+      @include common.media-max(400px) {
+        font-size: 20px;
+      }
+
+      @include common.nb-min {
+        font-size: 58px;
+        line-height: 118.75%;
+      }
+    }
+  }
+
+  ._text {
+    @include common.min1051 {
+      flex: 531px 1 1;
+    }
+  }
+
+  ._cut {
+    margin-top: 40px;
+
+    &.-open {
+      ._hidden {
+        max-height: 200px;
+      }
+    }
+
+    @include common.min1051 {
+      &.-open ._hidden,
+      ._hidden {
+        max-height: none;
+      }
+      button {
+        bottom: auto;
+        top: 76px;
+      }
+    }
+
+    @include common.nbzm {
+      button {
+        top: 124px;
+      }
+    }
+  }
+
+  .num-block {
+    position: absolute;
+    width: var(--size);
+    left: auto;
+    top: -72px;
+    height: calc(var(--size) * 2.5);
+    z-index: 1;
+    right: 0;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      content: "7";
+    }
+
+    @include common.min1051 {
+      top: 20px;
+      right: 60px;
+      height: var(--size);
+      width: 50vw;
+      &::after {
+        right: 0;
+      }
+    }
+
+    @include common.nbzm {
+      width: 700px;
+    }
+  }
+}
+
+#boulevard {
+  @include common.tab-min {
+    margin: 40px 0;
+  }
+
+  @include common.min1051 {
+    flex-direction: row;
+    gap: 80px;
+  }
+
+  @include common.nbzm {
+    gap: 120px;
+  }
+
+
+  ._bvd {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    width: 100%;
+
+    img {
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    @include common.min1051 {
+      gap: 4px;
+    }
+
+    @include common.media-min(1300px) {
+      gap: 6px;
+    }
+  }
+
+  .texture {
+    position: absolute;
+    right: -20px;
+    width: 30vw;
+    height: 75vw;
+    top: -40px;
+    background: url("/resources/blocks/points/assets/bbg.jpg") center / cover no-repeat;
+    @include common.micro {
+      right: -10px;
+    }
+    @include common.min1051 {
+      top: -20vw;
+      left: 42vw;
+      right: 42vw;
+      height: auto;
+      width: auto;
+      aspect-ratio: 532/1331;
+      background-image: url(/resources/blocks/points/assets/bvdbg.jpg);
+    }
+
+    @include common.nbzm {
+      left: 550px;
+      right: 550px;
+      top: -270px;
+    }
+  }
+
+  ._pic {
+    max-width: calc(100% - 20px);
+    align-self: flex-end;
+    @include common.min1051 {
+      order: 2;
+      flex: 1004px 1 1;
+    }
+  }
+
+  ._text {
+    margin: 64px 0 0 32px;
+    //padding-left: 40px;
+    //border-left: 1px solid #5F738B;
+    position: relative;
+    z-index: 2;
+
+    @include common.tab-min {
+      max-width: 600px;
+      align-self: flex-end;
+    }
+
+    @include common.min1051 {
+      order: 1;
+      flex: 473px 1 1;
+      max-width: none;
+    }
+
+    @include common.nbzm {
+      margin-left: -20px;
+      margin-right: 40px;
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 162.5%;
+      padding-right: 20px;
+      padding-left: 40px;
+      border-left: 1px solid #5F738B;
+
+      @include common.tab-min {
+        font-size: 20px;
+      }
+
+      @include common.nb-min {
+        font-size: 24px;
+        line-height: 150%;
+        padding-left: 60px;
+      }
+    }
+
+    .caption {
+      margin-left: 0;
+      margin-top: 120px;
+      display: none;
+      @include common.min1051 {
+        display: block;
+      }
+    }
+  }
+}
+
+#avenue {
+
+  @include common.min1051 {
+    flex-direction: row;
+    gap: 80px;
+    align-items: flex-end;
+  }
+
+  @include common.nbzm {
+    gap: 120px;
+  }
+
+  .texture {
+    position: absolute;
+
+    top: 0;
+    left: -20px;
+    right: 20px;
+    height: 188px;
+    background: url("/resources/blocks/points/assets/abg.jpg") right top no-repeat;
+
+    @include common.micro {
+      left: -10px;
+    }
+
+    @include common.min1051 {
+      display: none;
+    }
+
+  }
+
+  .caption {
+    margin-left: 0;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+
+    @include common.min1051 {
+      position: absolute;
+      right: 0;
+      bottom: -22px;
+      margin: 0;
+    }
+  }
+
+  ._pic {
+    max-width: calc(100% + 20px);
+    margin-right: -20px;
+
+    @include common.micro {
+      max-width: calc(100% + 10px);
+      margin-right: -10px;
+    }
+
+    @include common.min1051 {
+      flex: 947px 1 1;
+      margin-right: 0;
+    }
+  }
+
+  p {
+    margin: 40px 20px 60px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 162.5%;
+
+    @include common.tab-min {
+      font-size: 20px;
+    }
+
+    @include common.min1051 {
+      flex: 472px 1 1;
+      border-bottom: 1px solid #5F738B;
+      padding-bottom: 50px;
+      margin-bottom: 120px;
+    }
+
+    @include common.nb-min {
+      font-size: 24px;
+      line-height: 150%;
+      margin-bottom: 200px;
+    }
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    width: 193px;
+    height: 1px;
+    background: #5F738B;
+
+    @include common.min1051 {
+      display: none;
+    }
+  }
+}
+
+#fc {
+  margin-left: -20px;
+  margin-right: -20px;
+
+  @include common.micro {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  ._sticky {
+    position: relative;
+
+    @include common.min1051 {
+      top: 200px;
+      display: flex;
+      gap: 60px;
+      padding: 0 20px 100px;
+    }
+
+    @include common.nbzm {
+      gap: 120px;
+    }
+
+    .caption {
+      margin-left: 40px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      @include common.min1051 {
+        display: none;
+      }
+    }
+
+    ._text {
+      justify-content: flex-start;
+
+      ._captions {
+        display: none;
+      }
+
+      @include common.min1051 {
+        flex: 600px 1 1;
+        //padding-left: 60px;
+        ._captions {
+          display: block;
+          overflow: hidden;
+          position: relative;
+          //flex-grow: 1;
+          //min-height: 100px;
+          margin-left: 40px;
+          border-top: 1px solid;
+          border-bottom: 1px solid;
+          padding: 20px 8px;
+          height: 300px;
+
+          .line {
+            position: relative;
+            transition: all .3s ease-in-out;
+            top: 0;
+          }
+
+          p {
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 162.5%;
+            margin: 0;
+            text-align: center;
+            width: 100%;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            //@include common.nb-min {
+            //  font-size: 26px;
+            //  line-height: 150%;
+            //}
+
+            &:not(:first-child) {
+              position: absolute;
+            }
+
+            @for $i from 2 through 10 {
+              &:nth-child( #{$i}) {
+                top: ($i - 1)*280 + px;
+              }
+            }
+
+          }
+        }
+      }
+    }
+
+    h1 {
+      padding-left: 40px;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 118.75%;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+
+      @include common.tab-min {
+        font-size: 58px;
+      }
+
+      @include common.nb-min {
+        font-size: 84px;
+        line-height: 90px;
+      }
+    }
+
+    .texture {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 20vw;
+      background: url("/resources/blocks/points/assets/fcbg.jpg") center / cover no-repeat;
+      @include common.min1051 {
+        top: -80px;
+        bottom: -20px;
+        right: 80px;
+        width: auto;
+        aspect-ratio: 473/918;
+        background-image: url(/resources/blocks/points/assets/fcbgb.jpg);
+      }
+    }
+
+    .swiper {
+      //display: flex;
+      //align-items: stretch;
+      //overflow: hidden;
+      //position: relative;
+      //z-index: 1;
+      --swiper-navigation-color: #fff;
+      --swiper-navigation-size: 24px;
+      --swiper-navigation-top-offset: 35vw;
+
+      @include common.tab-min {
+        --swiper-navigation-size: 32px;
+        --swiper-navigation-top-offset: 45vw;
+      }
+
+      @include common.min1051 {
+        flex: 947px 1 1;
+        --swiper-navigation-top-offset: 50%;
+      }
+
+      .swiper-slide {
+        //flex: calc(100vw + 4px) 0 0;
+        //@include common.tab-min {
+        //  flex-basis: calc((100vw + 8px) / 0.8);
+        //}
+        //@include common.min1051 {
+        //  //flex-basis: calc((100% + 16px) / 0.8);
+        //  //flex-basis: calc((100% / 0.8) + 16px);
+        //  flex-basis: calc(100% + 16px);
+        //}
+
+        img {
+          width: 100%;
+          border-right: 4px solid #000;
+          @include common.tab-min {
+            border-right-width: 8px;
+          }
+          @include common.min1051 {
+            border-right-width: 16px;
+          }
+        }
+
+        p {
+          --margin: 20px;
+          margin: var(--margin) calc(20vw + var(--margin)) var(--margin) var(--margin);
+          font-size: 16px;
+          @include common.tab-min {
+            --margin: 40px;
+            font-size: 20px;
+          }
+
+          @include common.min1051 {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+#residences {
+  @include common.min1051 {
+    display: grid;
+    grid-template-columns: 798fr 648fr;
+    gap: 80px;
+    padding-top: 300px;
+  }
+
+  @include common.nbzm {
+    gap: 120px;
+  }
+
+  .caption {
+    margin-bottom: 20px;
+
+    @include common.min1051 {
+      position: absolute;
+      bottom: 0;
+      z-index: 1;
+    }
+  }
+
+  ._pic {
+    width: 100%;
+    max-width: calc(100% - 20px);
+    align-self: flex-end;
+    z-index: 2;
+    position: relative;
+
+    @include common.tab-min {
+      max-width: calc(100% - 60px);
+    }
+
+    @include common.min1051 {
+      grid-area: 1 / 1 / 2 / 2;
+      max-width: none;
+      place-self: start start;
+      margin-bottom: 100px;
+      &::before {
+        display: none;
+      }
+    }
+
+    strong {
+      left: 80px;
+
+      @include common.tab-min {
+        left: 100px;
+      }
+
+      @include common.min1051 {
+        display: none;
+      }
+    }
+  }
+
+  .num-block {
+    position: absolute;
+    left: 0;
+    top: 85vw;
+    z-index: 3;
+
+    width: var(--size);
+    height: calc(var(--size) * 4);
+    right: 30px;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: "8";
+    }
+
+    @include common.tab-min {
+      top: calc(114vw - 200px);
+      bottom: auto;
+    }
+
+    @include common.min1051 {
+      width: 437px;
+      height: var(--size);
+      top: 320px;
+      left: calc(38vw + 160px);
+      &::after {
+        right: 0;
+      }
+    }
+
+    @include common.nbzm {
+      left: 600px;
+    }
+
+    @include common.nb-min {
+      width: 530px;
+      top: 360px;
+      left: 591px;
+    }
+  }
+
+  .texture {
+    position: absolute;
+    right: -20px;
+    left: -20px;
+    top: 90vw;
+    bottom: 0;
+    background: url("/resources/blocks/points/assets/resbg.jpg") center / cover no-repeat;
+
+    @include common.micro {
+      right: -10px;
+      left: -10px;
+    }
+
+    @include common.min1051 {
+      left: 60px;
+      top: 372px;
+      right: 0;
+      bottom: -160px;
+    }
+  }
+
+  .text {
+    margin-left: 80px;
+    padding-left: 20px;
+    margin-top: 32px;
+
+    @include common.tab-min {
+      margin-left: 140px;
+    }
+
+    @include common.min1051 {
+      grid-area: 1 / 2 / 2 / 3;
+      margin-left: 0;
+      margin-top: 200px;
+      place-self: start start;
+      padding-left: 40px;
+      position: relative;
+    }
+
+    @include common.nbzm {
+      padding-left: 30px;
+    }
+
+    @include common.nb-min {
+      margin-top: 300px;
+    }
+
+    h1 {
+      display: none;
+
+      @include common.min1051 {
+        display: block;
+        margin: 0 0 40px;
+        font-size: 58px;
+      }
+
+      @include common.nb-min {
+        font-size: 84px;
+        line-height: 90px;
+      }
+    }
+
+    ol {
+      display: none;
+
+      @include common.min1051 {
+        display: flex;
+        margin-top: 80px;
+        margin-bottom: 0;
+        margin-left: -80px;
+        padding: 80px 40px 0 0;
+        position: relative;
+        &::before {
+          display: block;
+          content: "";
+          position: absolute;
+          height: 1px;
+          background: #5F738B;
+          left: 80px;
+          top: 0;
+          right: 120px;
+        }
+      }
+    }
+  }
+
+  ._cut.-open {
+    ._hidden {
+      max-height: 200px;
+    }
+  }
+
+  ol {
+    position: relative;
+    z-index: 2;
+    margin-top: 80px;
+    list-style: none;
+    counter-reset: res;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 162.5%;
+    letter-spacing: -0.16px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding: 0;
+    margin-bottom: 50px;
+
+    @include common.tab-min {
+      font-size: 20px;
+      margin-top: 120px;
+      padding: 0 44px;
+      margin-bottom: 80px;
+    }
+
+    @include common.min1051 {
+      grid-area: 1 / 2 / 2 / 3;
+      display: none;
+    }
+
+    @include common.nb-min {
+      font-size: 24px;
+      line-height: 150%;
+    }
+
+    li {
+      position: relative;
+      counter-increment: res;
+      padding-left: 80px;
+
+      &::before {
+        display: block;
+        content: "0" counter(res);
+        color: #5F738B;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 250;
+        line-height: 108.333%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        @include common.min1051 {
+          font-size: 28px;
+        }
+
+        @include common.nb-min {
+          font-size: 33px;
+          top: 2px;
+        }
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        left: 32px;
+        top: 11px;
+        width: 16px;
+        height: 1px;
+        background: #5F738B;
+        @include common.min1051 {
+          top: 14px;
+          left: 45px;
+        }
+        @include common.nb-min {
+          top: 20px;
+          left: 50px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "../common";
+
+.text-right {
+  transform: translateX(-150%);
+
+  &.-left {
+    transform: translateX(150%);
+  }
+
+  &.-bottom {
+    transform: translateY(150%);
+  }
+
+  @include common.min1051{
+    &.-pcleft{
+      &._left,
+      &.-bottom{
+        transform: translateX(-150%);
+      }
+    }
+  }
+}

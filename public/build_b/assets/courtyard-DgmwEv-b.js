@@ -1,0 +1,1 @@
+import{S as e}from"./animation-HBSgZ-XK.js";import"./app-C73I5fqw.js";const r=document.querySelector("#courtyard ._yard strong");let t;e.create({trigger:r,start:"top bottom",end:"bottom 80%",scrub:!0,onUpdate:o=>{t=-100+100*o.progress,r.style.transform=`translateX(${t}%)`}});

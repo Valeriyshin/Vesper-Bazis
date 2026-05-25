@@ -1,0 +1,94 @@
+@use "../common";
+
+#slogan {
+  height: 180vh;
+  --scroll: 120vw;
+  @include common.colorSwitch;
+
+  @include common.tab {
+    height: 100vh;
+  }
+
+  .sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 56px;
+    text-align: center;
+    overflow: hidden;
+
+    @include common.tab {
+      gap: 24px;
+    }
+
+    hr{
+      border: none;
+      width: 100%;
+      max-width: 420px;
+      height: 1px;
+      background: #5F738B;
+      @include common.tab {
+        max-width: 156px;
+      }
+    }
+
+    .caption{
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -10px;
+    }
+
+    //noinspection CssInvalidFunction
+    h1 {
+      //font-family: Roboto, sans-serif;
+      //font-size: 84px;
+      //font-style: normal;
+      //font-weight: 900;
+      //line-height: normal;
+      //text-transform: uppercase;
+      margin: 0;
+      //transition: all .2s ease-in-out;
+      transform: translateX(calc(var(--scroll) * -1));
+
+      color: #FFF;
+      text-align: center;
+      font-size: 84px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+
+      @include common.nb {
+        font-size: 64px;
+      }
+
+      @include common.tab {
+        font-size: 32px;
+      }
+    }
+
+    h2 {
+      //font-family: Roboto, sans-serif;
+      font-size: 56px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      //transition: all .2s ease-in-out;
+      transform: translateX(var(--scroll));
+      margin: 0;
+      @include common.nb {
+        font-size: 48px;
+      }
+
+      @include common.tab {
+        font-size: 16px;
+      }
+    }
+  }
+}

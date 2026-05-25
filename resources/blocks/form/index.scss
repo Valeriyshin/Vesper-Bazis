@@ -1,0 +1,211 @@
+@use "../common";
+
+form {
+  border: 1px solid #5F738B;
+  padding: 40px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 160px;
+  background: #000 url("/resources/blocks/form/assets/bg.jpg") center / cover no-repeat;
+  z-index: 1;
+  position: relative;
+
+  .-mob {
+    display: none;
+  }
+
+  @include common.media-max(1050px) {
+    padding: 40px;
+    gap: 80px;
+  }
+
+  @include common.tab {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 20px;
+
+    .-mob {
+      display: block;
+    }
+    .-dt {
+      display: none;
+    }
+  }
+
+  ._text {
+    flex-basis: 417px;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    @include common.tab {
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      margin: 0 0 20px;
+
+      @include common.tab {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+    }
+
+    h2 {
+      color: #99C0E5;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin: 0 0 40px;
+
+      @include common.tab {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 0;
+      }
+    }
+
+    p {
+      color: #FFF;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin: 0;
+
+      a, a:visited {
+        color: #4497e6;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  ._fields {
+    flex-basis: 667px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    @include common.tab {
+      flex: 1;
+      gap: 20px;
+    }
+
+    ._inputs {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 60px;
+      align-self: stretch;
+      @include common.tab {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      input {
+        padding: 18px;
+        flex-grow: 1;
+        width: 100%;
+        text-align: center;
+        background: none;
+        margin: 0;
+        border: none;
+        border-bottom: 1px solid #ffffff;
+        color: #ffffff;
+
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: capitalize;
+
+        outline: none;
+
+        @include common.tab {
+          padding: 8px;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        &:focus {
+          background: rgba(#fff, .2);
+        }
+
+        //noinspection CssInvalidPseudoSelector
+        &:-webkit-autofill,
+        &:-internal-autofill-selected,
+        &:autofill {
+          background: rgba(#fff, .2) !important;
+        }
+      }
+    }
+
+    button {
+      width: 300px;
+      height: 80px;
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+      color: #fff;
+      background: #000000;
+      text-align: center;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+      outline: none;
+      cursor: pointer;
+      border: 1px solid #ffffff;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      @include common.tab {
+        width: 152px;
+        height: 44px;
+        flex-shrink: 0;
+        text-align: center;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  p.-mob {
+    margin: 0;
+
+    a, a:visited {
+      color: #4497e6;
+      text-decoration: underline;
+    }
+  }
+}

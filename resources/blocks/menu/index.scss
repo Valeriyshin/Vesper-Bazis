@@ -1,0 +1,283 @@
+@use "../common";
+
+#menu {
+  //display: none !important;
+  --scroll: 60px;
+  position: fixed;
+  z-index: 15;
+  transform: translateY(-120%);
+  right: 0;
+  left: 0;
+  background: #ffffff;
+  //padding-top: 238px;
+  padding-top: 80px;
+  transition: all 0.4s ease-in-out;
+  max-height: 100vh;
+  //overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #5F738B;
+  box-shadow:0 0 30px 0 rgba(153, 192, 229, 0.3);
+  @include common.dark {
+    background: #000;
+  }
+  @include common.nb {
+    padding-top: 93px;
+    //padding-bottom: 40px;
+    max-height: 125vh;
+  }
+  @include common.tab() {
+    //padding-top: 93px;
+    padding-top: 60px;
+    max-height: 100vh;
+  }
+
+  body.-menu & {
+    top: 0;
+    transform: translateY(0%);
+  }
+
+  .container {
+    //display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    //gap: 20px;
+    overflow: auto;
+    pointer-events: all;
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    //display: block;
+    //column-count: 2;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+
+    > :last-child:nth-child(even) {
+      grid-column: 1 / -1;
+    }
+
+    @include common.nb {
+      gap: 30px;
+    }
+
+    @media all and (max-height: 700px) {
+      gap: 16px 40px;
+    }
+
+    @include common.tab {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    hr{
+      --size: 1px;
+      align-self: stretch;
+      margin: 0;
+      //width: 40%;
+      //margin: 0 20%;
+      border: none;
+      height: var(--size);
+      flex: var(--size) 0 0;
+      background: #5F738B;
+      display: none;
+    }
+
+    a {
+      color: #000;
+      //@include common.inter;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 26px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &._dl {
+        &::before {
+          display: block;
+          content: "";
+          width: 56px;
+          height: 50px;
+          background: url(/resources/blocks/top/assets/dl.svg) center / contain no-repeat;
+        }
+      }
+
+      @include common.dark {
+        color: #ffffff;
+        &._dl::before {
+          background-image: url(/resources/blocks/top/assets/dl-i.svg);
+        }
+      }
+
+      @include common.nb {
+        font-size: 24px;
+        gap: 15px;
+
+        &._dl::before {
+          height: 35px;
+        }
+      }
+
+      @media all and (max-height: 700px) {
+        font-size: 20px;
+      }
+
+      @include common.tab {
+        font-size: common.half(32px);
+        &._dl::before {
+          height: 25px;
+          width: 30px;
+        }
+      }
+    }
+
+    ._langs {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      grid-column: 1 / -1;
+
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+
+        &[href] {
+          color: #b3b2b2;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &:first-child {
+          order: 1;
+        }
+
+        &:last-child {
+          order: 3;
+        }
+      }
+
+      &:before {
+        display: block;
+        content: "";
+        order: 2;
+        width: 2px;
+        height: 30px;
+        background: #000000;
+        @include common.dark {
+          background: #ffffff;
+        }
+        @include common.nb {
+          height: 30px;
+        }
+        @include common.tab {
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  ._switch {
+    display: none !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 139px;
+    height: 52px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: 1px solid #000000;
+    position: relative;
+    border-radius: 40px;
+    cursor: pointer;
+
+    @include common.tab {
+      width: common.quart(139px);
+      height: common.quart(52px);
+    }
+
+    span {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      z-index: 1;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: transparent center no-repeat;
+
+      &._light {
+        background-image: url(/resources/blocks/menu/assets/light.svg);
+        background-size: 70% auto;
+      }
+
+      &._dark {
+        background-image: url(/resources/blocks/menu/assets/dark.svg);
+        background-size: 60% auto;
+      }
+
+      @include common.tab {
+        width: common.quart(52px);
+        height: common.quart(52px);
+      }
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #000000;
+      transition: all .2s ease-in-out;
+
+      @include common.tab {
+        width: common.quart(52px);
+        height: common.quart(52px);
+      }
+    }
+
+    @include common.dark {
+      border-color: #ffffff;
+      &::before {
+        left: 139px - 52px;
+        background: #ffffff;
+
+        @include common.tab {
+          left: common.quart(139px - 52px);
+        }
+      }
+    }
+  }
+}
+
+//#menu-overflow {
+//  display: none;
+//  position: fixed;
+//  left: 0;
+//  top: 0;
+//  right: 0;
+//  bottom: 0;
+//  z-index: 19;
+//
+//  body.-menu & {
+//    display: block;
+//  }
+//}

@@ -1,0 +1,503 @@
+@use "../common";
+
+#about {
+  margin-top: 300px;
+  @include common.colorSwitch;
+
+  @include common.tab{
+    margin-top: 200px;
+  }
+
+  .caption {
+    margin-top: 0;
+    margin-bottom: 64px;
+
+    @include common.tab() {
+      margin-bottom: 32px;
+    }
+  }
+
+  ._split {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    position: relative;
+
+    @include common.nb {
+      margin-top: 20px;
+    }
+
+    @include common.media-max(1050px) {
+      flex-direction: column;
+    }
+  }
+
+  ._texture {
+    position: absolute;
+    left: 30%;
+    top: -200px;
+    width: 38%;
+    bottom: 200px;
+    //background: url("/resources/blocks/about/assets/texture.jpg") lightgray -135.958px 0px / 122.959% 100% no-repeat;
+    background: url("/resources/blocks/about/assets/texture.jpg") center / cover no-repeat;
+    opacity: .8;
+
+
+    @include common.media-max(1050px) {
+      left: auto;
+      right: -20px;
+      width: 50%;
+      bottom: auto;
+      height: calc(100vw - 40px + 100px);
+    }
+
+    @include common.micro {
+      right: -10px;
+    }
+  }
+
+  ._image {
+    --size: 60%;
+    aspect-ratio: 1/1;
+    width: var(--size);
+    flex: var(--size) 0 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+
+    @include common.media-max(1050px) {
+      --size: 80%;
+      position: relative;
+      z-index: 1;
+    }
+
+    @include common.tab {
+      --size: calc(100% - 80px);
+
+    }
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      content: "";
+      background: linear-gradient(180deg, rgba(217, 217, 217, 0.00) 0%, rgba(23, 27, 43, 0.40) 100%);
+      z-index: 1;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .text-right {
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      position: relative;
+      color: #FFF;
+      //font-family: Roboto, sans-serif;
+      margin: 0 56px;
+      z-index: 2;
+
+      font-size: 84px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 107.143%;
+      text-transform: uppercase;
+
+      @include common.nb {
+        font-size: 64px;
+      }
+
+      @include common.media-max(1050px) {
+        margin: 0 40px;
+      }
+
+      @include common.tab {
+        font-size: 42px;
+        margin: 0 28px;
+      }
+
+      @include common.micro {
+        font-size: 32px;
+      }
+    }
+
+    h3 {
+      position: relative;
+      color: #FFF;
+      //font-family: Roboto, sans-serif;
+      margin: 11px 56px 27px;
+      z-index: 2;
+
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+
+      @include common.nb {
+        font-size: 24px;
+      }
+
+      @include common.media-max(1050px) {
+        margin: 11px 40px 27px;
+      }
+
+      @include common.tab {
+        font-size: 14px;
+        margin: 11px 28px 14px;
+      }
+
+      @include common.micro {
+        font-size: 10px;
+      }
+    }
+  }
+
+  ._text {
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+
+    @include common.nb {
+      padding-left: 80px;
+    }
+
+    @include common.media-max(1050px) {
+      padding: 40px;
+    }
+
+    @include common.tab {
+      padding: 20px;
+    }
+
+    .caption {
+      position: relative;
+      top: -120px;
+      margin-bottom: 236px;
+
+      @include common.media-max(1050px) {
+        top: 0;
+        margin-left: 0;
+        left: -40px;
+        margin-bottom: 80px;
+      }
+
+      @include common.tab {
+        left: -20px;
+        margin-bottom: 40px;
+      }
+    }
+
+    ._inner {
+      padding-bottom: 40px;
+    }
+
+    .num-block {
+      position: absolute;
+      left: -300px;
+      top: 60px;
+      height: 167px;
+      right: 0;
+
+      &::after {
+        content: "1";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 167px;
+        height: 167px;
+      }
+
+      @include common.media-max(1050px) {
+        right: 120px;
+        top: -300px;
+        left: auto;
+        width: 152px;
+        height: 476px;
+        //transform: none !important;
+        box-shadow: none;
+        &::after {
+          width: 152px;
+          height: 152px;
+          top: auto;
+          bottom: 0;
+        }
+      }
+
+      @include common.tab {
+        right: 40px;
+        top: -150px;
+        width: 76px;
+        height: 238px;
+        &::after {
+          width: 76px;
+          height: 76px;
+        }
+      }
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+
+    h2 {
+      //font-family: Inter, sans-serif;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      margin: 0;
+
+      @include common.tab {
+        font-size: 24px;
+      }
+    }
+
+    p {
+      //font-family: Inter, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 150%;
+      margin: 24px 0;
+      @include common.nb {
+        font-size: 24px;
+      }
+      @include common.tab {
+        font-size: 16px;
+        margin: 20px 0;
+      }
+    }
+
+    ._cut {
+      padding-right: 60px;
+      position: relative;
+      cursor: pointer;
+
+      button {
+        background: transparent url("data:image/svg+xml,%3Csvg width='38' height='21' viewBox='0 0 38 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L19 19L37 1' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A") no-repeat no-repeat center center;
+        background-size: contain;
+        width: 36px;
+        height: 18px;
+        border: none;
+        padding: 0;
+        margin: 0;
+        transition: all .2s ease;
+        position: absolute;
+        right: 0;
+        top: 120px;
+      }
+
+      ._hidden {
+        overflow: hidden;
+
+        p {
+          transition: all .2s ease;
+          transform: translateY(calc(-100% - 24px));
+        }
+      }
+
+      &.-open {
+        button {
+          transform: rotateX(180deg);
+        }
+
+        ._hidden {
+          p {
+            transform: translateY(0);
+          }
+        }
+      }
+
+      @include common.media-max(1050px) {
+        button {
+          top: auto;
+          bottom: 0;
+        }
+
+        ._hidden {
+          max-height: 0;
+          transition: max-height .2s ease;
+        }
+
+        &.-open {
+          ._hidden {
+            max-height: 160px;
+          }
+        }
+      }
+    }
+
+    ._buttons {
+
+      @include common.media-max(1050px) {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      @include common.media-max(420px){
+        margin-left: -20px;
+      }
+
+      @include common.media-max(380px){
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+        margin-left: 0;
+      }
+
+      > a, > button {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 30px;
+        width: 339px;
+        height: 91px;
+        border: 1px solid #000000;
+        text-decoration: none;
+        flex-shrink: 0;
+        transition: all .2s ease-in-out;
+        padding-left: 20px;
+        //position: relative;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+
+        &::before {
+          //position: absolute;
+          left: 20px;
+          display: block;
+          content: '';
+          width: 34px;
+          height: 34px;
+          background: url(/resources/blocks/about/assets/dl.svg) no-repeat center  / contain;
+        }
+
+        &:hover {
+          background: #000000;
+          color: #ffffff;
+
+          &::before {
+            background-image: url(/resources/blocks/about/assets/dl-i.svg);
+          }
+        }
+
+        @include common.dark {
+          border-color: #ffffff;
+          background: #000000;
+          color: #ffffff;
+          &::before {
+            background-image: url(/resources/blocks/about/assets/dl-i.svg);
+          }
+
+          &:hover {
+            background: #fff;
+            color: #000;
+
+            &::before {
+              background-image: url(/resources/blocks/about/assets/dl.svg);
+            }
+          }
+        }
+
+        @include common.tab {
+          gap: 10px;
+          width: 170px;
+          height: 50px;
+          padding: 0 0 0 8px;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          text-transform: uppercase;
+
+          &::before {
+            width: 17px;
+            height: 17px;
+          }
+
+        }
+
+        @include common.media-max(380px){
+          //width: auto;
+          width: 210px;
+          text-align: center;
+          >*{
+            flex-grow: 1;
+          }
+
+          &::before{
+            flex-grow: 0;
+          }
+        }
+      }
+
+      >a{
+        padding-left: 20px;
+      }
+
+      > button {
+        margin-bottom: 40px;
+        @include common.tab {
+          margin-bottom: 0;
+        }
+      }
+
+      > button::before {
+        background-image: url(/resources/blocks/about/assets/yt-i.svg) !important;
+        width: 40px;
+        height: 28px;
+
+        @include common.tab{
+          width: 20px;
+          height: 14px;
+        }
+      }
+
+      > button:hover {
+        &::before {
+          background-image: url(/resources/blocks/about/assets/yt.svg) !important;
+        }
+      }
+    }
+  }
+}
+
+#arc-modal{
+  ._body{
+    width: 100%;
+    max-width: 1636px;
+    display: flex;
+    iframe{
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+  }
+}

@@ -1,0 +1,281 @@
+@use "../common";
+
+#contacts {
+  @include common.colorSwitch;
+  overflow: hidden;
+
+  h1 {
+    //font-family: Inter, sans-serif;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0 0 56px;
+
+    @include common.nb {
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+
+    @include common.tab {
+      font-size: 24px;
+      margin-bottom: 48px;
+    }
+  }
+
+  ._split {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+
+    @include common.tab {
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    ._text {
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+        margin: 0;
+        padding: 0;
+
+        @include common.tab {
+          flex-direction: row;
+          gap: 16px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        li {
+          padding-left: 120px;
+          //font-family: Inter, sans-serif;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-transform: capitalize;
+          position: relative;
+
+          @include common.tab {
+            padding-left: 40px;
+            font-size: 12px;
+          }
+
+          &::before {
+            display: block;
+            content: "";
+            position: absolute;
+            left: 0;
+            background: center / contain no-repeat;
+          }
+
+          &.-point::before {
+            background-image: url(/resources/blocks/contacts/assets/pin.svg);
+            left: 23px;
+            top: 8px;
+            width: 54px;
+            height: 64px;
+            @include common.dark {
+              background-image: url(/resources/blocks/contacts/assets/pin-i.svg);
+            }
+
+            @include common.tab {
+              left: 0;
+              top: 0;
+              width: 32px;
+              height: 56px;
+            }
+          }
+
+          &.-phone::before {
+            background-image: url(/resources/blocks/contacts/assets/phone.svg);
+            left: 33px;
+            top: 2px;
+            width: 35px;
+            height: 65px;
+            @include common.dark {
+              background-image: url(/resources/blocks/contacts/assets/phone-i.svg);
+            }
+
+            @include common.tab {
+              left: 0;
+              top: 14px;
+              width: 17px;
+              height: 32px;
+            }
+          }
+
+          &.-wh::before {
+            background-image: url(/resources/blocks/contacts/assets/clock.svg);
+            left: 26px;
+            top: 19px;
+            width: 52px;
+            height: 52px;
+            @include common.dark {
+              background-image: url(/resources/blocks/contacts/assets/clock-i.svg);
+            }
+
+            @include common.tab {
+              left: 0;
+              top: 14px;
+              width: 23px;
+              height: 23px;
+            }
+          }
+
+          @include common.media-max(500px) {
+            padding-left: 0;
+            padding-top: 60px;
+            &::before {
+              top: 0 !important;
+              left: 50% !important;
+              height: 42px !important;
+              transform: translateX(-50%);
+            }
+            //&.-point::before{
+            //  height: 42px;
+            //}
+            &.-phone::before{
+              //height: 42px;
+              width: 24px;
+            }
+            &.-wh::before{
+              //height: 42px;
+              width: 34px;
+            }
+          }
+
+          h2 {
+            //font-family: Inter, sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin: 0;
+
+            @include common.tab {
+              font-size: 12px;
+            }
+          }
+
+          p {
+            margin: 0;
+          }
+
+          a {
+            display: block;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-decoration-skip-ink: auto;
+            text-decoration-thickness: auto;
+            text-underline-offset: auto;
+            text-underline-position: from-font;
+            text-transform: capitalize;
+            color: #000000;
+            @include common.dark {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+
+      ._switch {
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 28px;
+        margin-top: 72px;
+        @include common.nb() {
+          gap: 20px;
+        }
+
+        @include common.tab {
+          justify-content: center;
+          margin-top: 40px;
+        }
+
+        button {
+          border: 3px solid #000;
+          background: #FFF;
+          box-shadow: 0 4px 6.2px 0 rgba(138, 154, 173, 0.50);
+          margin: 0;
+          padding: 0;
+          width: 214px;
+          height: 51px;
+          flex-shrink: 0;
+          color: #010101;
+          //font-family: Inter, sans-serif;
+          font-size: 28px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          text-transform: uppercase;
+          transition: all .2s ease-in-out;
+          cursor: pointer;
+
+          @include common.nb {
+            font-size: 20px;
+            width: 200px;
+            border-width: 2px;
+          }
+
+          @include common.tab {
+            width: 160px;
+            height: 37px;
+            font-size: 14px;
+          }
+
+          &:hover {
+            color: #fff;
+            background: #000000;
+          }
+
+          @include common.dark {
+            border-color: #ffffff;
+            color: #fff;
+            background: #000000;
+            &:hover {
+              color: #000000;
+              background: #ffffff;
+            }
+
+            &.-active {
+              background: #99C0E5;
+              color: #ffffff;
+              border-color: #99C0E5;
+            }
+          }
+
+          &.-active {
+            background: #99C0E5;
+            color: #ffffff;
+            border-color: #99C0E5;
+          }
+        }
+      }
+    }
+
+    iframe {
+      --size: 60%;
+      width: var(--size);
+      flex: var(--size) 0 0;
+
+      @include common.tab {
+        width: 100%;
+        --size: 300px;
+        height: var(--size);
+      }
+    }
+  }
+}
+
+

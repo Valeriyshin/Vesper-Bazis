@@ -1,0 +1,79 @@
+@use "../common";
+
+#safety {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 160px 0 0;
+  text-align: center;
+  //font-family: Inter, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  padding: 0;
+  @include common.colorSwitch;
+
+  @include common.media-max(1050px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 120px;
+  }
+
+  @include common.tab{
+    margin-top: 60px;
+    font-size: 12px;
+  }
+
+  @include common.micro{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  li {
+
+    @include common.tab{
+      padding: 10px;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      margin: 0 auto 24px;
+      background: center / contain no-repeat;
+      width: 90px;
+      height: 90px;
+
+      @include common.media-max(1050px) {
+        width: 80px;
+        height: 80px;
+      }
+
+      @include common.tab{
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    $items: p, fid, sec, lock, cctv, fix;
+
+    //noinspection CssUnknownTarget
+    @each $item in $items {
+      &.-#{$item} {
+        &::before {
+          background-image: url(/resources/blocks/safety/assets/#{$item}.svg);
+        }
+      }
+    }
+
+    &.-cctv::before {
+      width: 100px;
+      @include common.tab{
+        width: 45px;
+      }
+    }
+  }
+}

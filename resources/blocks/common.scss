@@ -1,0 +1,202 @@
+$lb: #99C0E5;
+
+@mixin media-max($width) {
+  @media all and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin media-min($width) {
+  @media all and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin min1051() {
+  @media all and (min-width: 1051px) {
+    @content;
+  }
+}
+
+@mixin nb($width: 1635px) {
+  @media all and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin nb-min() {
+  @media all and (min-width: 1636px) {
+    @content;
+  }
+}
+
+@mixin nb_zoomed($width: 1323px) {
+  @media all and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin nbzm() {
+  @media all and (min-width: 1323px) {
+    @content;
+  }
+}
+
+@mixin tab($width: 767px) {
+  @media all and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin tab-min() {
+  @media all and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin micro($width: 399px) {
+  @media all and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin inter() {
+  font-family: Inter, "sans-serif";
+}
+
+@mixin dark() {
+  body.dark & {
+    @content;
+  }
+}
+
+@mixin colorSwitch() {
+  transition: color .2s ease-in-out;
+  @include dark {
+    color: #ffffff;
+  }
+}
+
+@function half($size) {
+  $new: $size / 2;
+  @return $new;
+}
+
+@function quart($size) {
+  $new: $size * 0.75;
+  @return $new;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Manrope", sans-serif;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+html {
+  @include nb {
+    zoom: .8;
+  }
+  @include tab {
+    zoom: 1;
+  }
+}
+
+body {
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+
+  &.dark {
+    background: #000000;
+    color: #fff;
+  }
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1596px + 40px;
+  margin: 0 auto;
+  padding: 0 20px;
+  //overflow-x: hidden;
+
+  &.-overflow {
+    overflow: visible;
+  }
+
+  @include micro {
+    padding: 0 10px;
+  }
+}
+
+.caption {
+  color: #FFF;
+  text-align: right;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: capitalize;
+  margin-left: auto;
+  width: max-content;
+  margin-top: 54px;
+  display: none !important;
+
+  &:before {
+    display: inline-block;
+    content: "[  ";
+  }
+
+  &:after {
+    display: inline-block;
+    content: "  ]";
+  }
+
+  @include tab {
+    font-size: half(24px);
+    margin-top: half(44px);
+  }
+}
+
+.num-block {
+  --size: 76px;
+  border: 1px solid #5F738B;
+  box-shadow: 0 4px 6.2px 0 rgba(138, 154, 173, 0.50);
+  background: rgba(0, 0, 0, 0.01);
+  backdrop-filter: blur(7.5px);
+
+  @include tab-min{
+    --size: 124px;
+  }
+
+  @include nb-min{
+    --size: 167px;
+  }
+
+  &::after {
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5F738B;
+    text-align: center;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 250;
+    line-height: normal;
+    text-transform: uppercase;
+    @include media-max(1050px) {
+      font-size: 70px;
+    }
+    @include tab {
+      font-size: 50px;
+    }
+  }
+}

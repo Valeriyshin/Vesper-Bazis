@@ -1,0 +1,1 @@
+import{g as r}from"./animation-CJJD_r6J.js";import"./app-DzGWvwr7.js";document.querySelectorAll(".op-text").forEach(t=>{const o=t.dataset.end??"70%";r.to(t,{scrollTrigger:{trigger:t,start:"top bottom",end:`bottom ${o}`,scrub:!0},opacity:"1",ease:"none"})});

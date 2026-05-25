@@ -1,0 +1,82 @@
+@use "../common";
+
+#philosophy {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  --scroll: 223px;
+  @include common.colorSwitch;
+
+  @include common.nb {
+    --scroll: 137px;
+  }
+
+  @include common.tab {
+    min-height: 400px;
+    --scroll: 88px;
+  }
+
+  @include common.media-max(460px) {
+    --scroll: 60px;
+  }
+
+  .caption {
+    position: absolute;
+    top: 54px;
+    right: 0;
+    margin-top: 0;
+
+    @include common.tab {
+      top: common.half(44px);
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    //font-family: Roboto, sans-serif;
+    font-style: normal;
+    line-height: normal;
+    text-transform: uppercase;
+    font-size: 82px;
+    display: flex;
+
+    b {
+      font-weight: 800;
+
+      i {
+        display: block;
+        font-style: normal;
+        transform: translateY(calc(223px - var(--scroll)));
+        @include common.nb {
+          transform: translateY(calc(137px - var(--scroll)));
+        }
+        @include common.tab {
+          transform: translateY(calc(88px - var(--scroll)));
+        }
+
+        @include common.media-max(460px) {
+          transform: translateY(calc(60px - var(--scroll)));
+        }
+
+      }
+    }
+
+    span {
+      font-weight: 250;
+    }
+
+    @include common.nb() {
+      font-size: 50px;
+    }
+
+    @include common.tab {
+      font-size: common.half(64px);
+    }
+
+    @include common.media-max(460px) {
+      font-size: 22px;
+    }
+  }
+}

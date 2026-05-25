@@ -1,0 +1,47 @@
+@use "../common";
+
+#word {
+  transition: color .2s ease-in-out;
+  position: relative;
+  @include common.dark {
+    color: #ffffff;
+  }
+
+  h1 {
+    //font-family: Inter, sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 66px;
+
+    @include common.nb {
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+
+    @include common.tab() {
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
+  }
+
+  iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  ._disabler{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /* Не мешает кликам */
+    background: transparent;
+    z-index: 2;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,26 @@
+@use "../common";
+
+.alert{
+  ._body{
+    min-width: 800px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+
+    @include common.media-max(800px){
+      padding: 40px;
+      min-width: 0;
+    }
+
+    p{
+      font-size: 32px;
+      margin: 0;
+      text-align: center;
+      @include common.media-max(800px){
+        font-size: 24px;
+      }
+    }
+  }
+}

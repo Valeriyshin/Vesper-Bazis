@@ -1,0 +1,1 @@
+import{g as o}from"./animation-Dg_BERcg.js";import"./app-DcBzUYSN.js";document.querySelectorAll(".text-right").forEach(t=>{const r=t.dataset.end??"80%";o.to(t,{scrollTrigger:{trigger:t,start:"top bottom",end:`bottom ${r}`,scrub:!0},transform:"translateX(0%)",ease:"none"})});

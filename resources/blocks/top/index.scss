@@ -1,0 +1,226 @@
+@use "../common";
+
+%logo {
+  height: 28px;
+
+  &.-dark {
+    display: none;
+  }
+
+  @include common.dark {
+    display: none;
+    &.-dark {
+      display: block;
+    }
+  }
+
+  @include common.tab {
+    height: auto;
+    width: 85px;
+  }
+}
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #ffffff;
+  transition: all .2s ease-in-out;
+  @include common.dark {
+    background: #000000;
+  }
+
+  .container {
+    height: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+    @include common.tab() {
+      height: 60px;
+    }
+  }
+
+  img._bazis {
+    @extend %logo;
+    justify-self: left;
+  }
+
+  img._vesper {
+    width: 166px;justify-self: center;
+
+    @include common.tab {
+      width: auto;
+      height: 30px;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 327px;
+    height: 50px;
+    border: 2px solid #fff;
+    color: #000;
+    text-align: center;
+    @include common.inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all .15s ease-in-out;
+
+    &:hover {
+      color: #fff;
+      background: #000000;
+    }
+
+    @include common.dark {
+      color: #ffffff;
+      background: #000000;
+      &:hover {
+        color: #000000;
+        background: #ffffff;
+      }
+    }
+
+    @include common.tab {
+      width: common.half(327px);
+      height: common.half(77px);
+      font-size: common.half(18px);
+    }
+
+    @include common.media-max(339px) {
+      display: none;
+    }
+  }
+
+  button.menu-trigger {
+    justify-self: right;
+    position: static;
+    height: 40px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    //pointer-events: none;
+    //opacity: 0;
+    //visibility: hidden;
+
+    @include common.tab {
+      width: common.half(66px);
+      height: common.half(63px);
+    }
+  }
+}
+
+.menu-trigger {
+  --scroll: 30px;
+  position: fixed;
+  z-index: 20;
+  right: calc(50% - 798px);
+  height: 40px;
+  width: 50px;
+  top: 19px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  cursor: pointer;
+  outline: none;
+
+  span {
+    width: 100%;
+    height: 5px;
+    background: #000000;
+    transition: all .15s ease-in-out;
+    transform-origin: 50% 50%;
+  }
+
+  body.-menu & {
+    span {
+      &:nth-child(1) {
+        transform: translate(1px, 18.5px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        transform: rotateY(90deg);
+      }
+
+      &:nth-child(3) {
+        transform: translate(1px, -17.5px) rotate(-45deg);
+      }
+    }
+  }
+
+  @include common.dark {
+    span {
+      background: #ffffff;
+    }
+  }
+
+  @include common.nb_zoomed {
+    right: 20px;
+  }
+
+  @include common.tab {
+    width: common.half(66px);
+    height: common.half(63px);
+    top: calc(10px + var(--scroll) * 0.567);
+
+    span {
+      height: 3px;
+    }
+
+    body.-menu & {
+      span {
+        &:nth-child(1) {
+          transform: translate(1px, 15.5px) rotate(45deg);
+        }
+
+        &:nth-child(3) {
+          transform: translate(1px, -14.5px) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  @include common.micro {
+    right: 10px;
+  }
+}
+
+#logo {
+  --scroll: 30px;
+  position: fixed;
+  left: calc(50% - 798px);
+  top: 26px;
+  z-index: 20;
+
+  img {
+    @extend %logo;
+    text-transform: uppercase;
+  }
+
+  @include common.nb_zoomed() {
+    left: 20px;
+  }
+
+  @include common.tab {
+    top: calc(16px + var(--scroll) * 0.55);
+  }
+
+  @include common.micro {
+    left: 10px;
+  }
+}
