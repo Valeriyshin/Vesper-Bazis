@@ -1,5 +1,6 @@
 {
   "framework": null,
+  "outputDirectory": "public",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.2",
@@ -7,13 +8,7 @@
     }
   },
   "routes": [
-    {
-      "src": "/(.*\\.(jpg|jpeg|png|gif|ico|svg|css|js|ttf|woff|woff2|pdf|mp4|webmanifest|txt))",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.php"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }
