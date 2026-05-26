@@ -1,4 +1,36 @@
 <?php
+// Serve static files from public/ directly (Vercel routes all traffic to this file)
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+$publicFile  = dirname(__DIR__) . '/public' . $requestPath;
+
+if ($requestPath !== '/'
+    && !str_ends_with($requestPath, '.php')
+    && file_exists($publicFile)
+    && is_file($publicFile)
+) {
+    $mimes = [
+        'css'         => 'text/css; charset=utf-8',
+        'js'          => 'application/javascript; charset=utf-8',
+        'jpg'         => 'image/jpeg',
+        'jpeg'        => 'image/jpeg',
+        'png'         => 'image/png',
+        'gif'         => 'image/gif',
+        'svg'         => 'image/svg+xml',
+        'ico'         => 'image/x-icon',
+        'woff'        => 'font/woff',
+        'woff2'       => 'font/woff2',
+        'ttf'         => 'font/ttf',
+        'webmanifest' => 'application/manifest+json',
+        'txt'         => 'text/plain',
+    ];
+    $ext  = strtolower(pathinfo($publicFile, PATHINFO_EXTENSION));
+    $mime = $mimes[$ext] ?? 'application/octet-stream';
+    header('Content-Type: ' . $mime);
+    header('Cache-Control: public, max-age=31536000, immutable');
+    readfile($publicFile);
+    exit;
+}
+
 // Vercel: /tmp is the only writable directory
 $tmpDir   = '/tmp/laravel';
 $cacheDir = "$tmpDir/bootstrap-cache";
